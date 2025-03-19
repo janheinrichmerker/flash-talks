@@ -1,0 +1,96 @@
+%%% DATE. January 6th, 2013.
+
+%%% A class option for seventeen point fonts with constant listskips and rigid displayskips.
+%%% \cf{/usr/share/texmf[-texlive]/tex/latex/extsizes/size17.clo}
+%%% LaTeX internal abbreviations. \cf{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=ltxabbrv}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesFile{size17r.clo}
+ [2012/1/06 v1.2 Non-standard LaTeX file (size option)]
+
+
+\setlength{\abovedisplayskip}{10pt}%     Default: 15\p@ \@plus4\p@ \@minus8\p@
+\setlength{\belowdisplayskip}{8pt}%      Default: \abovedisplayskip
+\setlength{\abovedisplayshortskip}{\z@}% Default: \z@ \@plus4\p@
+\setlength{\belowdisplayshortskip}{\z@}% Default: 8\p@ \@plus4\p@ \@minus3\p@
+
+\def\slidelisti{\leftmargin1.1\leftmargini
+                \topsep 6.0\p@
+                \parsep 1.5\p@
+                \itemsep\parsep
+                \parskip\parsep}
+
+
+%%% Standard font sizes and baselineskips in size11.clo. [2007/10/19 v1.4h]
+%%%
+%%% {6}{7}      %\tiny
+%%% {8}{9.5}    %\scriptsize
+%%% {9}{11}     %\footnotesize
+%%% {10}{12}    %\small
+%%% {11}{13.6}  %\normalsize
+%%% {12}{14}    %\large
+%%% {14}{18}    %\Large
+%%% {17}{22}    %\LARGE
+%%% {20}{25}    %\huge
+%%% {25}{30}    %\Huge
+
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize{17.28}{23}% Default: {22}
+   \let\@listi\slidelisti}
+\normalsize
+\newcommand\small{%
+   \@setfontsize\small{14.4}{18}% Default: {17}
+   \let\@listi\slidelisti}
+\newcommand\footnotesize{%
+   \@setfontsize\footnotesize{12}{14.5}
+   \let\@listi\slidelisti}
+\newcommand\scriptsize{\@setfontsize\scriptsize{10}{12}}
+\newcommand\tiny{\@setfontsize\tiny{8}{9.5}}
+\newcommand\large{\@setfontsize\large{20.74}{26}}
+\newcommand\Large{\@setfontsize\Large{24.88}{32}}
+\newcommand\LARGE{\@setfontsize\LARGE{29.86pt}{35}}
+\newcommand\huge{\@setfontsize\huge{35.83pt}{41}}
+\newcommand\Huge{\@setfontsize\Huge{42.99pt}{52}}
+
+
+\setlength\parindent{1.5em}
+\setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}
+\setlength\medskipamount{6\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength\bigskipamount{12\p@ \@plus 4\p@ \@minus 4\p@}
+
+\setlength\floatsep    {15\p@ \@plus 4\p@ \@minus 4\p@}
+\setlength\textfloatsep{25\p@ \@plus 5\p@ \@minus 5\p@}
+\setlength\intextsep   {16\p@ \@plus 5\p@ \@minus 5\p@}
+\setlength\@fptop{0\p@ \@plus 1fil}
+\setlength\@fpsep{12\p@ \@plus 2fil}
+\setlength\@fpbot{0\p@ \@plus 1fil}
+
+\setlength\partopsep{3\p@}% Default: 5\p@ \@plus 2\p@ \@minus 2\p@}
+
+
+\@listi
+%%% If not redefined, the list environments inherit the settings for \topsep, \parsep, \itemsep, etc. from the higher-level list definitions. \cf{/usr/share/texmf[-texlive]/tex/latex/base/size11.clo}
+\def\@listii {\leftmargin1.1\leftmarginii
+              \labelwidth\leftmarginii
+              \advance\labelwidth-\labelsep
+              \topsep 4\p@
+              \itemsep\parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+              \labelwidth\leftmarginiii
+              \advance\labelwidth-\labelsep
+              \topsep 3\p@
+              \itemsep\parsep}
+\def\@listiv {\leftmargin\leftmarginiv
+              \labelwidth\leftmarginiv
+              \advance\labelwidth-\labelsep}
+\def\@listv  {\leftmargin\leftmarginv
+              \labelwidth\leftmarginv
+              \advance\labelwidth-\labelsep}
+\def\@listvi {\leftmargin\leftmarginvi
+              \labelwidth\leftmarginvi
+              \advance\labelwidth-\labelsep}
+
+
+\endinput
+%%
+
