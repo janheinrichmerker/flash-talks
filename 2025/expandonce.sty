@@ -1,0 +1,67 @@
+%%
+%% This is file `expandonce.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% expandonce.dtx  (with options: `package')
+%% 
+\def\expandonce#1#2#3{%
+    \toks@{}%
+    \@temptokena{}%
+    \let\expandonce@@macro#3%
+    \expandafter\expandonce@#1\@eonil%
+    \expandafter\def\expandafter#2\expandafter{\the\toks@}%
+}
+\def\expandonce@{%
+    \futurelet\@tempa\expandonce@@%
+}
+\def\expandonce@@{%
+    \ifx\@tempa\bgroup%
+        \let\@tempb\expandonce@bgroup%
+    \else\ifx\@tempa\egroup%
+        \let\@tempb\expandonce@egroup%
+    \else\ifcat\noexpand\@tempa\space%
+        \let\@tempb\expandonce@space%
+    \else\ifx\@tempa\@eonil%
+        \let\@tempb\@gobble%
+    \else%
+        \let\@tempb\expandonce@other%
+    \fi\fi\fi\fi%
+    \@tempb%
+}
+\def\expandonce@bgroup{%
+    \bgroup%
+    \@temptokena\expandafter{\the\toks@}%
+    \toks@{}%
+    \afterassignment\expandonce@%
+    \let\@tempa= %
+}
+\def\expandonce@egroup{%
+    \xdef\@tempa{\the\@temptokena{\the\toks@}}%
+    \egroup%
+    \toks@\expandafter{\@tempa}%
+    \afterassignment\expandonce@%
+    \let\@tempa= %
+}
+\def\expandonce@space{%
+    \toks@\expandafter\expandafter\expandafter{%
+        \expandafter\the\expandafter\toks@%
+        \space%
+    }%
+    \afterassignment\expandonce@%
+    \let\@tempa= %
+}
+\long\def\expandonce@other#1{%
+    \ifx#1\expandonce@@macro%
+        \toks@\expandafter\expandafter\expandafter{%
+            \expandafter\the\expandafter\toks@#1}%
+    \else%
+        \toks@\expandafter{\the\toks@#1}%
+    \fi%
+    \expandonce@%
+}
+ \def\@eonil{\errmessage{expandonce: Should not happen!}}
+\endinput
+%%
+%% End of file `expandonce.sty'.
